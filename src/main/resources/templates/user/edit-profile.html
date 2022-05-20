@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns: th="https//www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>MissingPets</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../edit-profile.css">
+        <link rel="icon" href="../logo-editado.png">
+        <link rel="stylesheet" href="../navbar.css">  
+    </head>
+    <body>
+        
+        <header th:insert="fragments/navbar.html :: header">
+        </header>
+        
+        <form th:action="@{/user/edit-profile}" method='POST' th:object="${profile}" class="form-register" enctype="multipart/form-data">
+            <h4>Actualización de Perfil</h4>
+
+            <input type="hidden" name="id" th:value="*{id}"/>
+
+            <label> Nombre
+                <input class="controls" type="text" placeholder="Nombre" th:value="*{name}" th:field="*{name}" >
+            </label>
+            <label> Email
+                <input class="controls" type="email" placeholder="Email" th:value="*{email}" th:field="*{email}">
+            </label>
+            <label> Número de Teléfono
+                <input class="controls" type="text" placeholder="Telefono" th:value="*{phone}" th:field="*{phone}">
+            </label>
+            <label> Foto de Perfil
+                <input class="controls" type="file" name="archivo" th:value="*{photo}" >
+            </label>
+
+            <input type="hidden" th:value="*{role.displayName}" th:field="*{role}">
+            <input type="hidden" th:value="*{active}" th:field="*{active}">
+            <input type="hidden" th:value="*{password}" th:field="*{password}">
+
+
+            <p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+
+            <input class="botons" type="submit" value="Guardar cambios">
+
+        </form>
+    </body>
+</html>

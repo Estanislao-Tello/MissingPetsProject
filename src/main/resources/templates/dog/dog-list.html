@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" xmlns: th="https//www.thymeleaf.org/">
+
+    <head>
+        <title>MissingPets</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../dog-list.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="icon" href="./logo-editado.png">
+        <link rel="stylesheet" href="../navbar.css">
+    </head>
+    <body>
+
+        <nav th:insert="fragments/navbar.html :: header"></nav>
+
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            </nav>
+        </div>
+
+        <main>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div th:each="dogs:${dogs}" class="col">
+                    <div class="card h-100">
+                        <img class="img-fluid" th:if="${dogs.photo != null}" th:src="${'/photo/dog?id=' + dogs.id}" />
+                        <img th:if="${dogs.photo == null}" src="./Sinfoto.png" />
+                        <div class="card-body">
+                            <h3 class="card-title" th:text="${dogs.name != null and !#strings.isEmpty(dogs.name) ? dogs.name : 'Perro extraviado'}"></h3>   
+                            <h4 class="card-text" th:text="*{dogs.description}"></h4>
+                            <h5 class="card-text" th:text="*{dogs.breed} + ' ' + *{dogs.colour}"></h5>
+                        </div>
+                        <div class="card-footer"> 
+
+                            <h5 class="card-text">Para contactarme:
+                                <ul>
+                                    <span class="fa fa-envelope-o" style="font-size:24px" th:text="' ' + *{dogs.owner.email}"></span>
+                                    <br>
+                                    <span class="fa fa-phone" style="font-size:24px" th:text="' ' + *{dogs.owner.phone}"></span>
+                                </ul>
+                            </h5>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <H2>Missing Pets - Grupo 6 comisión 7B</H2>
+            <H2>All Rights Reserved</H2>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    </body>
+
+</html>

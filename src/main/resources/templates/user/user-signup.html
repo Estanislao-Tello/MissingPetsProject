@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" xmlns:th="https//www.thymeleaf.org/">
+
+    <head>
+        <title>MissingPets</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../user-signup.css">
+        <link rel="stylesheet" href="../navbar.css">
+        <link rel="icon" href="../logo-editado.png">
+    </head>
+
+    <body>
+
+        <header th:insert="fragments/navbar.html :: header"> 
+        </header>
+
+        <form th:action="@{/user/signup-form}" method='POST' th:object="${user}" class="form-register" enctype="multipart/form-data">
+            <h4>Formulario de Registro</h4>
+            <label> Nombre
+                <input class="controls" type="text" placeholder="Nombre" th:field="*{name}">
+            </label>
+            <label> Email
+                <input class="controls" type="email" placeholder="Email" th:field="*{email}">
+            </label>
+            <label> Número de Teléfono
+                <input class="controls" type="text" placeholder="Telefono" th:field="*{phone}">
+            </label>
+            <label> Foto de Perfil
+                <input class="controls" type="file" name="archivo">
+            </label>
+            <label> Contraseña
+                <input class="controls" type="password" placeholder="Contraseña" th:field="*{password}">
+            </label>
+
+            <p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+
+            <input class="botons" type="submit" value="Registrar">
+
+            <p><a href="/user/login">¿Ya tienes cuenta? Inicia sesión aquí</a></p>
+        </form>
+
+    </body>
+
+</html>

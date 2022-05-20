@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" xmlns: th="https//www.thymeleaf.org/">
+
+    <head>
+        <title>MissingPets</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../dog-form.css">
+        <link rel="icon" href="../logo-editado.png">
+        <link rel="stylesheet" href="../navbar.css">  
+    </head>
+
+    <body>
+
+        <header th:insert="fragments/navbar.html :: header"> 
+        </header>
+
+        <form th:action="@{/pets/dog-form}" method='POST' th:object="${dog}" class="form-register"
+              enctype="multipart/form-data">
+            <!--th:attr="value = ${client.name}"-->
+            <input type="hidden" name="ownerId" th:value="${session.session.id}" >
+            <input type="hidden" th:value="${dog.id}">
+            <h4>Registro de Perro</h4>
+            <label> Nombre
+                <input class="controls" type="text" placeholder="Nombre" aria-label=".form-control-lg example"
+                       th:field="*{name}">
+            </label><br>
+            <label> Raza
+                <input class="controls" type="text" placeholder="Raza" aria-label=".form-control-lg example"
+                       th:field="*{breed}">
+            </label><br>
+            <label> Tamaño
+                <select class="controls" th:field="*{size}">
+                    <option th:value="'chico'" th:text="Chico"></option>
+                    <option th:value="'mediano'" th:text="Mediano"></option>
+                    <option th:value="'grande'" th:text="Grande"></option>
+                </select>
+            </label><br>
+            <label> Foto
+                <input class="controls" type="file" name="archivo">
+            </label><br>
+            <label> Color
+                <input class="controls" type="text" placeholder="Color" aria-label=".form-control-lg example" th:field="*{colour}">
+            </label><br>
+            <label> Genero
+                <select class="controls" th:field="*{gender}">
+                    <option th:value="'macho'" th:text="Macho"></option>
+                    <option th:value="'hembra'" th:text="Hembra"></option>
+                </select>
+            </label><br>
+            <label> Descripción y lugar encontrado/extraviado
+                <input class="controls" type="text" aria-label=".form-control-lg example" th:field="*{description}">
+            </label>
+
+            <p th:if="${Error != null}" th:text="${Error}" style="color : red"></p>
+            <input type="submit" value='Guardar' class="botons" />
+
+        </form>
+
+    </body>
+
+</html>

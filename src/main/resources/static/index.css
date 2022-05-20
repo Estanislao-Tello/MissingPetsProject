@@ -1,0 +1,132 @@
+body {
+    font-family:serif ;
+    background-image: url(fondoindex.jpg);
+    background-position: initial;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;      
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    margin:0;
+    padding:0;
+}  
+
+main{
+    position: relative;
+    /*    border: 1px solid red;*/
+}
+
+.imagen {
+    position: relative;
+}
+
+.imagen1 {
+    position: relative;
+}
+
+.conteiner{
+    border: 0px solid;
+
+}
+
+.Titulo{
+    width: 1000px;
+    place-items: left;  
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    display:grid;
+}
+
+.hero{
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+    border-radius: 10px;
+    display:grid;
+}
+
+.menu-button{
+    display:grid;
+    grid-template-rows:  2fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    width: 1000px;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #FBB536;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    position: relative;
+    font-family: monospace;
+}
+
+.button:hover {
+    background-color: rgb(251 , 61 , 54);
+}
+
+.button:active {
+    background-color: #8b3e8e;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.button1 {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #FBB536;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    position: relative;
+    font-family: monospace;
+}
+
+.button1:hover {
+    background-color: rgb(251 , 61 , 54);
+}
+
+.button1:active {
+    background-color: #8b3e8e;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color:grey;
+    color: white;
+    margin-top: 300px;
+    opacity: 60%;
+}
+
+footer h2{
+    font-family:monospace;
+    color: #ffffff;
+}
+

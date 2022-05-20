@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" xmlns: th="https//www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>MissingPets</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../navbar.css">
+        <link rel="icon" href="./logo-editado.png">
+        <header th:fragment="header">
+    </head>
+    <body>
+
+        <nav class="navbar">
+            <!-- LOGO -->
+            <div class="logo">MissingPets</div>
+            <!-- NAVIGATION MENU -->
+            <ul class="nav-links">
+                <!-- NAVIGATION MENUS -->
+                <div class="menu">
+                    <li><a href="/">Home</a></li>
+
+                    <li><a href="/pets">Buscar mascotas</a></li>
+
+                    <div sec:authorize="isAuthenticated()" th:if="${session.session != null}"> 
+                        <li><a href="/pets/dog-form">Publicar mascota</a></li>
+                    </div>
+
+                    <div sec:authorize="hasRole('ADMIN')" th:if="${session.session != null}"> 
+                        <li><a href="/user/list-user">Listar usuarios</a></li>
+                    </div>
+
+                    <li class="services">
+
+                        <a href="#"  th:if="${session.session != null}" th:text="${session.session.name}"></a>
+                        <a href="#"  th:if="${session.session == null}">Usuario</a>
+
+                        <!-- DROPDOWN MENU -->
+                        <ul class="dropdown" th:if="${session.session == null}">
+                            <li><a href="/user/login">Iniciar Sesion</a></li>
+                            <li><a href="/user/signup-form">Registrarse</a></li>
+                        </ul>
+                        <ul class="dropdown" th:if="${session.session != null}">
+                            <li><a sec:authorize="isAuthenticated()" th:href="@{/user/edit-profile(id=__${session.session.id}__)}">Editar perfil</a></li>
+                            <li><a href="/logout">Cerrar Sesion</a></li>
+                        </ul>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+    </body>
+</html>
